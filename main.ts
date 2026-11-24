@@ -32,9 +32,9 @@ function run(p,q){
       case 2:D[s++]=p[nx-4]|p[nx-3]<<8|p[nx-2]<<16|p[nx-1]<<24;break; // PUSH32
       case 3:s--;break; // POP
       case 4:D[s]=D[s-1];s++;break; // DUP
-      case 5:{const t=D[s-1];D[s-1]=D[s-2];D[s-2]=t;break;} // SWAP
+      case 5:{const x=D[s-1],y=D[s-2];D[s-1]=y;D[s-2]=x;break;} // SWAP
       case 6:D[s]=D[s-2];s++;break; // OVER
-      case 7:{const a=D[s-3];D[s-3]=D[s-2];D[s-2]=D[s-1];D[s-1]=a;break;} // ROT
+      case 7:{const x=D[s-3],y=D[s-2],z=D[s-1];D[s-3]=y;D[s-2]=z;D[s-1]=x;break;} // ROT
       case 23:D[s-1]=-D[s-1]|0;break; // NEG wraps
       case 27:D[s-1]=~D[s-1];break; // NOT
       case 16:case 17:case 18:case 19:case 20:case 21:case 22:case 24:case 25:case 26:case 28:case 29:case 30:case 32:case 33:case 34:{
